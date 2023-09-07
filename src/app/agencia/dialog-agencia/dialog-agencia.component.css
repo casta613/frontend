@@ -1,0 +1,33 @@
+/* dialog-agencia.component.css */
+.dialog-title {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-container {
+  margin: 0 auto;
+  max-width: 300px;
+}
+
+.form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.save-button {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.cancel-button {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+/* You can adjust the styles according to your design preferences */
