@@ -1,0 +1,9 @@
+table {
+    width: 100%;
+}
+
+mat-card-content {
+    background-color: white;
+}
+
+mat-paginator {}

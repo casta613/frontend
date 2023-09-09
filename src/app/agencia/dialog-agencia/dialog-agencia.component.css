@@ -16,8 +16,10 @@
 }
 
 .button-container {
+
   display: flex;
   justify-content: space-between;
+
 }
 
 .save-button {
@@ -29,5 +31,13 @@
   background-color: #dc3545;
   color: #fff;
 }
+
+mat-dialog-content,
+mat-dialog-actions,
+mat-dialog-title {
+  background-color: white;
+}
+
+
 
 /* You can adjust the styles according to your design preferences */
