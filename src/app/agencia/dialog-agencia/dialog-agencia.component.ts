@@ -16,29 +16,7 @@ export class DialogAgenciaComponent implements OnInit {
   formAgencia: FormGroup;
   accion: string = "Agregar"
   accionBoton: string = "Guardar";
-  //listaCategorias: Categoria[] = [];
-  //imagen: string | null = null;
-  //imagenCargada: string | null = null;
-
-  /*onFileSelected(event: any) {
-
-    const file: File = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-
-      
-      reader.readAsDataURL(file);
-      
-
-      reader.onload = (e: any) => {
-        const base64String = e.target.result;
-        this.imagen = base64String;
-        this.imagenCargada = reader.result as string;
-
-        };
-    }
-  }*/
- 
+   
 
   constructor(
     private dialogoReferencia: MatDialogRef<DialogAgenciaComponent>,
@@ -49,104 +27,74 @@ export class DialogAgenciaComponent implements OnInit {
     private _agenciaServicio: AgenciaService
   ) {
     this.formAgencia = this.fb.group({
+      AgenciaID: [null, Validators.required],
       Nombre: ['', Validators.required],
       Telefono: ['', Validators.required],
    
 
-    })
-
-
-    if (this.agenciaEditar) {
-
-      this.accion = "Editar";
-      this.accionBoton = "Actualizar";
-    }
-
-    /*this._categoriaServicio.getCategorias().subscribe({
-      next: (data) => {
-
-        if (data.status) {
-
-          this.listaCategorias = data.value;
-
-          if (this.productoEditar)
-            this.formProducto.patchValue({
-              idCategoria: this.productoEditar.idCategoria
-            })
-
-        }
-      },
-      error: (e) => {
-      },
-      complete: () => {
-      }
-    })*/
+    }) 
+    
 
   }
-
 
   ngOnInit(): void {
 
     if (this.agenciaEditar) {
-      console.log(this.agenciaEditar)
       this.formAgencia.patchValue({
+        AgenciaID: this.agenciaEditar.AgenciaID,
         Nombre: this.agenciaEditar.Nombre,
         Telefono: String(this.agenciaEditar.Telefono),
         
+        
       })
     }
+   
   }
 
-  agregarEditarAgencia() {
-    const formData = new FormData(); // Crea un nuevo objeto FormData
-
-    formData.append('Nombre', this.formAgencia.value.Nombre);
-    formData.append('Telefono', this.formAgencia.value.Telefono.toString());
-   
+  agregarAgencia() {
+    const _agencia: Agencia = {
+      AgenciaID:  this.formAgencia.value.AgenciaID == null ? 0 : this.formAgencia.value.AgenciaID,
+      Nombre: this.formAgencia.value.Nombre,
+      Telefono: this.formAgencia.value.Telefono,
+      
+    }
     
+    if (this.agenciaEditar) {
+      console.log(_agencia);
+      this._agenciaServicio.edit(_agencia).subscribe({
+          next: (data) => {
+  
+            
+              console.log(data);
+              this.dialogoReferencia.close('editar')           
+  
+          },
+          error: (e) => {
+          },
+          complete: () => {
+          }
+      }) 
+      
+      
 
-    /*if (this.productoEditar) {
-
-      this._productoServicio.editdos(formData).subscribe({
+    }else {
+      
+      this._agenciaServicio.save(_agencia).subscribe({
         next: (data) => {
 
-          if (data.status) {
-            this.mostrarAlerta("El producto fue editado", "Exito");
-            this.dialogoReferencia.close('editado')
-          } else {
-            this.mostrarAlerta("No se pudo editar el producto", "Error");
-          }
-
-        },
-        error: (e) => {
-          console.log(e)
-        },
-        complete: () => {
-        }
-      })
-
-
-    } else {
-
-      this._productoServicio.savedos(formData).subscribe({
-        next: (data) => {
-
-          if (data.status) {
-            this.mostrarAlerta("El producto fue registrado", "Exito");
-            this.dialogoReferencia.close('agregado')
-          } else {
-            this.mostrarAlerta("No se pudo registrar el producto", "Error");
-          }
+          
+            console.log(data);
+            this.dialogoReferencia.close('agregado')           
 
         },
         error: (e) => {
         },
         complete: () => {
         }
-      })
+    }) 
 
 
-    }*/
+    }
   }
   cerrarDialogo() {
     this.dialogoReferencia.close(); // This will close the dialog

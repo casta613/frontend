@@ -1,0 +1,14 @@
+mat-card {
+    background-color: rgb(84, 226, 94);
+    margin-top: 30px;
+}
+
+mat-card-actions {
+    align-self: center;
+}
+
+mat-divider {
+    background-color: black;
+}
+
+button {}

@@ -12,8 +12,13 @@ const routes: Routes = [
   }
   ,
   {
+    path: 'Habitaciones',
+    loadChildren: () => import('./habitaciones/habitaciones.module').then(m =>m.HabitacionesModule) //ruta habitacion
+  }
+  ,
+  {
     path: 'agencia',
-    loadChildren: () => import('./agencia/agencias.module').then(m =>m.AgenciasModule) //ruta inicio-sesion
+    loadChildren: () => import('./agencia/agencias.module').then(m =>m.AgenciasModule) //ruta agencia
   }
 ];
 

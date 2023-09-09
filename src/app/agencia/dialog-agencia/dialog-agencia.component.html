@@ -1,8 +1,8 @@
 <!-- dialog-agencia.component.html -->
-<h2 mat-dialog-title>{{accion}} Agencia</h2>
+
 <mat-dialog-content>
   <form [formGroup]="formAgencia" class="form-container">
-    <mat-grid-list cols="1" rowHeight="80px">
+    <mat-grid-list cols="1" rowHeight="200px">
 
       <mat-form-field class="form-field">
         <input matInput formControlName="Nombre" placeholder="Nombre">
@@ -13,10 +13,10 @@
     </mat-grid-list>
   </form>
 </mat-dialog-content>
-<mat-dialog-actions align="end">
+<mat-dialog-actions>
   <div class="button-container">
-    <button mat-raised-button color="primary" (click)="agregarEditarAgencia()" class="save-button">{{ accionBoton
+    <button (click)="agregarAgencia()" class="save-button">{{ accionBoton
       }}</button>
-    <button mat-raised-button color="warn" (click)="cerrarDialogo()" class="cancel-button">Cancelar</button>
+    <button (click)="cerrarDialogo()" class="cancel-button">Cancelar</button>
   </div>
 </mat-dialog-actions>
