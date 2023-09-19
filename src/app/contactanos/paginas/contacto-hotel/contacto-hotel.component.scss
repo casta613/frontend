@@ -1,8 +1,9 @@
-.seccion{
+h1, h2, section, article, img{
     display: grid;
+    text-align: center;
     place-items: center;
 }
 
-h1, h2,section, img{
-    text-align: center;
+body, section{
+    background: linear-gradient(to right, #0ee9ef, #324DF9);
 }

@@ -1,0 +1,9 @@
+h1, h2, section, article, img, p{
+    display: grid;
+    place-items: center;
+    text-align: center;
+   
+}
+body, section{
+    background: linear-gradient(to right, #0ee9ef, #324DF9);
+}
