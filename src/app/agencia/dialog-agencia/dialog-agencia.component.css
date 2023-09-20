@@ -1,43 +1,20 @@
-/* dialog-agencia.component.css */
-.dialog-title {
-  font-size: 24px;
-  text-align: center;
-  margin-bottom: 20px;
+mat-form-field {
+    width: 100%;
+    margin: 10px 0px;
 }
 
-.form-container {
-  margin: 0 auto;
-  max-width: 300px;
+form {
+    width: 350px;
 }
 
-.form-field {
-  width: 100%;
-  margin-bottom: 20px;
+button {
+    width: 100px;
+    height: 30px;
+    background-color: gray;
 }
 
-.button-container {
-
-  display: flex;
-  justify-content: space-between;
-
+mat-dialog-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-.save-button {
-  background-color: #007bff;
-  color: #fff;
-}
-
-.cancel-button {
-  background-color: #dc3545;
-  color: #fff;
-}
-
-mat-dialog-content,
-mat-dialog-actions,
-mat-dialog-title {
-  background-color: white;
-}
-
-
-
-/* You can adjust the styles according to your design preferences */

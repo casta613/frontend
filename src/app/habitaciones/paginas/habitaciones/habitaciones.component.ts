@@ -6,6 +6,8 @@ import { Habitacion } from '../../../interface/habitacion';
 import {FormBuilder,FormGroup,Validators} from '@angular/forms';
 
 import { pipe } from 'rxjs';
+import { DialogoHabitacionComponent } from '../../dialog-habitacion/dialog-habitacion.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-habitaciones',
@@ -18,6 +20,7 @@ export class HabitacionesComponent implements OnInit {
 
   constructor(
     private _habitacionesServicio: HabitacionesService,
+    private dialog: MatDialog,
     private fb:FormBuilder
   ) {
 
@@ -43,5 +46,14 @@ export class HabitacionesComponent implements OnInit {
   ngOnInit(): void {
     this.mostrarHabitaciones();
   } 
+  
+  detalleHabitacion(habitacion: any): void {
+    const dialogRef = this.dialog.open(DialogoHabitacionComponent, {
+      data: { habitacion }, // Pasa los datos de la habitación al cuadro de diálogo
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('El diálogo se cerró con resultado:', result);
+    });
+  }
 }

@@ -7,12 +7,21 @@ import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DataTablesModule } from 'angular-datatables';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {DialogoHabitacionComponent} from './dialog-habitacion/dialog-habitacion.component';
 
 
 @NgModule({
   declarations: [
     HabitacionesComponent,
+    DialogoHabitacionComponent
     
   ],
   imports: [
@@ -21,7 +30,15 @@ import {MatDividerModule} from '@angular/material/divider';
     SharedModule,
     ReactiveFormsModule,
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
+    MatDialogModule,
+    MatIconModule,
+    MatInputModule,
+    MatGridListModule,
+    MatSnackBarModule,
+    DataTablesModule,
+    MatTableModule,
+    MatPaginatorModule
     
   ]
 })

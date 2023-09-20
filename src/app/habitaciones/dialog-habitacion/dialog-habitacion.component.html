@@ -1,0 +1,11 @@
+<mat-dialog-content>
+  <p>What's your favorite animal?</p>
+  <mat-form-field>
+    <mat-label>Favorite Animal</mat-label>
+    <input matInput placeholder="Escribe tu nombre">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button>Cancel</button>
+  <button mat-button [mat-dialog-close]=" animal" cdkFocusInitial>OK</button>
+</mat-dialog-actions>

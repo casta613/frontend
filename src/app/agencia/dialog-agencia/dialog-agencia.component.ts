@@ -10,7 +10,7 @@ import { AgenciaService } from '../../services/agencia.service';
 @Component({
   selector: 'app-dialog-agencia',
   templateUrl: './dialog-agencia.component.html',
-  styleUrls: ['./dialog-agencia.component.css']
+  styleUrls: ['./dialog-agencia.component.css'],
 })
 export class DialogAgenciaComponent implements OnInit {
   formAgencia: FormGroup;
@@ -25,6 +25,7 @@ export class DialogAgenciaComponent implements OnInit {
     private _snackBar: MatSnackBar,
     //private _categoriaServicio: CategoriaService,
     private _agenciaServicio: AgenciaService
+    
   ) {
     this.formAgencia = this.fb.group({
       AgenciaID: [null, Validators.required],
@@ -84,6 +85,7 @@ export class DialogAgenciaComponent implements OnInit {
 
           
             console.log(data);
+            
             this.dialogoReferencia.close('agregado')           
 
         },

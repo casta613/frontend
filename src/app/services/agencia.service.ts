@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Agencia } from '../interface/agencia';
 import {environment} from '../../environments/environments';
@@ -17,7 +17,12 @@ export class AgenciaService {
 
   getAgencias(): Observable<Agencia[]> {
 
-    return this.http.get<Agencia[]>(`${this.apiUrl}listar`)
+    const token = sessionStorage.getItem('token'); // O sessionStorage.getItem('token') si lo almacenas en sessionStorage
+
+    const headers = new HttpHeaders({
+    'Authorization': `Bearer ${token}`
+  });
+    return this.http.get<Agencia[]>(`${this.apiUrl}listar`, { headers })
 
   }
 
