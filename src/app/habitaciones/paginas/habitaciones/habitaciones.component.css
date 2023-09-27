@@ -4,11 +4,11 @@ mat-card {
 }
 
 mat-card-actions {
-    align-self: center;
+    text-align: center;
+    background-color: rgb(54, 168, 61);
+    width: 100%;
 }
 
 mat-divider {
     background-color: black;
 }
-
-button {}

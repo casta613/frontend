@@ -16,6 +16,7 @@ import { DataTablesModule } from 'angular-datatables';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {DialogoHabitacionComponent} from './dialog-habitacion/dialog-habitacion.component';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import {DialogoHabitacionComponent} from './dialog-habitacion/dialog-habitacion.
   imports: [
     CommonModule,
     HabitacionesRoutingModule,
+    MatButtonModule,
     SharedModule,
     ReactiveFormsModule,
     MatCardModule,

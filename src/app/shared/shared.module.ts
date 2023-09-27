@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RouterModule } from '@angular/router';
-
+import {NavigationOperatorComponent} from './components/navigation-operator/navigation-operator.component';
 
 @NgModule({
   declarations: [
     NavigationComponent,
-    FooterComponent
+    FooterComponent,
+    NavigationOperatorComponent
   ],
   imports: [
     CommonModule,
@@ -16,7 +17,8 @@ import { RouterModule } from '@angular/router';
   ],
   exports: [
     NavigationComponent,
-    FooterComponent
+    FooterComponent,
+    NavigationOperatorComponent
   ]
 })
 export class SharedModule { }

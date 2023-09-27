@@ -24,5 +24,10 @@ export class HabitacionesService {
     return this.http.post<ResponseApi>(`${this.apiUrl}Guardar`, request);
   }
 
+  edit(request: Habitacion): Observable<ResponseApi> {
+    return this.http.put<ResponseApi>(`${this.apiUrl}modificar/${request.HabitacionID}`, request);
+  }
+
+
   
 }

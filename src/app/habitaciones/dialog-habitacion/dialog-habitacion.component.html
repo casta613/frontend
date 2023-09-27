@@ -1,11 +1,39 @@
 <mat-dialog-content>
-  <p>What's your favorite animal?</p>
-  <mat-form-field>
-    <mat-label>Favorite Animal</mat-label>
-    <input matInput placeholder="Escribe tu nombre">
-  </mat-form-field>
+  <form [formGroup]="form" class="form-container">
+    <mat-grid-list cols="1" rowHeight="400px">
+
+      <label for="Ubicacion">Ubicacion</label>
+      <mat-form-field class="form-field">
+        <input matInput formControlName="Ubicacion">
+      </mat-form-field>
+      <label for="Precio">Precio</label>
+      <mat-form-field class="form-field">
+        <input matInput formControlName="Precio">
+      </mat-form-field>
+      <label for="Descripcion">Descripcion</label>
+      <mat-form-field class="form-field">
+        <input matInput formControlName="Descripcion">
+      </mat-form-field>
+      <mat-label>Tipo</mat-label>
+      <mat-form-field>
+        <select matNativeControl formControlName="TipoHabitacionID">
+          <option *ngFor="let tipo of listaTipo" [value]="tipo.TipoHabitacionID">{{ tipo.Nombre }}</option>
+        </select>
+      </mat-form-field>
+      <mat-label>Estatus</mat-label>
+      <mat-form-field>
+        <select matNativeControl formControlName="EstatusHabitacionID">
+          <option *ngFor="let estatus of listaEstatus" [value]="estatus.EstatusHabitacionID">{{ estatus.Nombre }}
+          </option>
+        </select>
+      </mat-form-field>
+
+    </mat-grid-list>
+  </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button>Cancel</button>
-  <button mat-button [mat-dialog-close]=" animal" cdkFocusInitial>OK</button>
+  <div class="button-container">
+    <button mat-raised-button (click)="agregar()" class="save-button">Agregar</button>
+    <button mat-raised-button (click)="cerrarDialogo()" class="cancel-button">Cancelar</button>
+  </div>
 </mat-dialog-actions>

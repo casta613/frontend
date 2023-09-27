@@ -30,7 +30,7 @@ export class HabitacionesComponent implements OnInit {
   
   }  
 
-  mostrarHabitaciones() {
+  mostrar() {
     this._habitacionesServicio.getHabitaciones().subscribe({
       next: (data) => {
         console.log(data);
@@ -44,7 +44,7 @@ export class HabitacionesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.mostrarHabitaciones();
+    this.mostrar();
   } 
   
   detalleHabitacion(habitacion: any): void {
@@ -54,6 +54,15 @@ export class HabitacionesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('El diálogo se cerró con resultado:', result);
+    });
+  }
+  agregar() {
+    this.dialog.open(DialogoHabitacionComponent, {
+      disableClose: true
+    }).afterClosed().subscribe(result => {
+      if (result === "agregado") {
+        this.mostrar();
+      }
     });
   }
 }
