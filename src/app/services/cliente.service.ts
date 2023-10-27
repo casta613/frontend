@@ -25,13 +25,28 @@ export class ClienteService {
 
   }
 
+  getCliente(request: string): Observable<Cliente> {
+    const token = sessionStorage.getItem('token'); 
+    const headers = new HttpHeaders({
+    'Authorization': `Bearer ${token}`
+  });
+    return this.http.get<Cliente>(`${this.apiUrl}buscar/${request}`, { headers });
+  }
+
   save(request: Cliente): Observable<ResponseApi> {
-   
-    return this.http.post<ResponseApi>(`${this.apiUrl}agregar`, request);
+    const token = sessionStorage.getItem('token'); 
+    const headers = new HttpHeaders({
+    'Authorization': `Bearer ${token}`
+  });
+    return this.http.post<ResponseApi>(`${this.apiUrl}agregar`, request, { headers });
   }
 
   edit(request: Cliente): Observable<ResponseApi> {
-    return this.http.put<ResponseApi>(`${this.apiUrl}modificar/${request.ClienteID}`, request);
+    const token = sessionStorage.getItem('token'); 
+    const headers = new HttpHeaders({
+    'Authorization': `Bearer ${token}`
+  });
+    return this.http.put<ResponseApi>(`${this.apiUrl}modificar/${request.ClienteID}`, request, { headers });
   }
 
   

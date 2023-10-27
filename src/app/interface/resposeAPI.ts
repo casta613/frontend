@@ -1,5 +1,6 @@
 export interface ResponseApi {
     
-    mensaje: string
+    mensaje: string,
+    base64:string
     
   }

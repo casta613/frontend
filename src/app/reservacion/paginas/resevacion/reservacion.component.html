@@ -1,0 +1,94 @@
+<app-navigation-operator> </app-navigation-operator>
+<fieldset>
+    <legend>Habitacion:</legend>
+    <table class="example-full-width" cellspacing="0">
+        <tr class="detalleHabitacion">
+            <td class="parametroHabitacion">No: {{No}}</td>
+            <td class="parametroHabitacion">Tipo: {{Tipo}}</td>
+            <td class="parametroHabitacion">Precio: {{Precio}}</td>
+
+        </tr>
+    </table>
+</fieldset>
+<fieldset>
+    <legend>Cliente:</legend>
+
+
+    <form [formGroup]="form" class="form">
+        <table class="example-full-width" cellspacing="0">
+            <tr class="detalleHabitacion">
+                <td class="parametroHabitacion"><mat-form-field class="example-full-width">
+                        <mat-label>Documento</mat-label>
+                        <input matInput formControlName="Documento">
+                    </mat-form-field>
+                </td>
+                <td class="parametroHabitacion">
+                    <button mat-raised-button color="primary" (click)="buscarCliente()"><mat-icon
+                            mat-list-icon>search</mat-icon>
+                        Buscar
+                        Cliente</button>
+                </td>
+                <td class="parametroHabitacion">
+                    <button mat-raised-button color="primary" (click)="agregarCliente()"><mat-icon
+                            mat-list-icon>add</mat-icon>
+                        Nuevo
+                        Cliente</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <form [formGroup]="form" class="form">
+
+
+        <table class="example-full-width" cellspacing="0">
+            <tr class="detalleHabitacion">
+
+                <td class="parametroHabitacion"><mat-form-field class="example-full-width">
+                        <mat-label>Nombre</mat-label>
+                        <input type="text" matInput formControlName="Nombre" readonly>
+                    </mat-form-field></td>
+                <td class="parametroHabitacion"><mat-form-field class="example-full-width">
+                        <mat-label>Apellido</mat-label>
+                        <input type="text" matInput formControlName="Apellido" readonly>
+                    </mat-form-field></td>
+                <td class="parametroHabitacion"><mat-form-field class="example-full-width">
+                        <mat-label>Celular</mat-label>
+                        <input type="text" matInput formControlName="Celular" readonly>
+                    </mat-form-field></td>
+
+            </tr>
+        </table>
+
+    </form>
+
+
+
+</fieldset>
+<fieldset>
+    <legend>Reserva:</legend>
+    <form [formGroup]="form" class="form">
+
+
+        <table class="table" cellspacing="0">
+
+
+            <tr>
+                <td class="parametroHabitacion"><mat-form-field class="example-full-width">
+                        <mat-label>Fecha Entrada</mat-label>
+                        <input type="date" matInput formControlName="FechaEntrada">
+                    </mat-form-field></td>
+                <td class="parametroHabitacion"><mat-form-field class="example-full-width">
+                        <mat-label>Fecha Salida</mat-label>
+                        <input type="date" matInput formControlName="FechaSalida">
+                    </mat-form-field></td>
+                <td class="parametroHabitacion">
+                    <button mat-raised-button color="primary" (click)="agregarReserva()"
+                        [disabled]="!form.valid"><mat-icon mat-list-icon>add</mat-icon>
+                        Agregar Reservacion</button>
+                </td>
+            </tr>
+
+        </table>
+
+    </form>
+</fieldset>

@@ -13,12 +13,19 @@
     </button>
 
     <nav class="header__nav" ngClass="{ 'header__nav--activo' : active }">
+
         <ul class="header__ul">
             <li class="header__li"><a routerLink="/habitaciones" class="header__a">Habitaciones</a></li>
-            <li class="header__li"><a routerLink="/agencia" class="header__a">Agencia</a></li>
-            <li class="header__li"><a routerLink="/cliente" class="header__a">Cliente</a></li>
-            <li class="header__li"><a routerLink="/inicio-sesion" class="header__a">Iniciar Sesion</a></li>
-            <li class="header__li"><a routerLink="/empleado" class="header__a">Empleado</a></li>
+            <!-- <li class="header__li"><a routerLink="/agencia" class="header__a">Agencia</a></li> 
+             <li class="header__li"><a routerLink="/empleado" class="header__a">Empleado</a></li>-->
+
+            <li class="header__li" *ngIf="rol === 'ADMIN'"><a routerLink="/cliente" class="header__a">Cliente</a></li>
+            <li class="header__li" *ngIf="rol === 'ADMIN'"><a routerLink="/reservaciones"
+                    class="header__a">Reservacion</a>
+            </li>
+            <li class="header__li" *ngIf="rol === 'ADMIN'"><a routerLink="/usuarios" class="header__a">Usuario</a></li>
+            <li class="header__li"><a (click)="cerrarSesion()" class="header__a">Cerrar Sesion</a></li>
+
         </ul>
     </nav>
 

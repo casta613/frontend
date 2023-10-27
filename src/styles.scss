@@ -34,7 +34,7 @@
   }
 }
 
-/* Reseteamos los margin y paddings de todas las etiquetas */
+/* Reseteamos los margin y paddings de todas las etiquetas 
 * , *::before , *::after{
   margin: 0;
   padding: 0;
@@ -44,7 +44,7 @@
 }
 *::before , *::after{
   display: block;
-}
+}*/
 
 /* Evitamos problemas con las imagenes */
 img , picture , video , iframe , figure{

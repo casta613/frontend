@@ -15,6 +15,7 @@ import { DataTablesModule } from 'angular-datatables';
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     DataTablesModule,
     MatCardModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatButtonModule
   ]
 })
 export class ClienteModule { }

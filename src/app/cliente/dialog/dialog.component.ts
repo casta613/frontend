@@ -12,6 +12,7 @@ import { ClienteService } from '../../services/cliente.service';
 })
 export class DialogComponent implements OnInit {
   form: FormGroup;
+  boton:string = 'Agregar';
 
   constructor(
     private dialogoReferencia: MatDialogRef<DialogComponent>,
@@ -22,9 +23,12 @@ export class DialogComponent implements OnInit {
     
   ) {
     this.form = this.fb.group({
-      ClienteID: [null, Validators.required],
+      ClienteID: null,
       Nombre: ['', Validators.required],
-      Telefono: ['', Validators.required],
+      Apellido: ['', Validators.required],
+      Celular: ['', Validators.required],
+      Correo: ['', Validators.required],
+      Documento: ['', Validators.required],
    
 
     }) 
@@ -38,10 +42,14 @@ export class DialogComponent implements OnInit {
       this.form.patchValue({
         ClienteID: this.Editar.ClienteID,
         Nombre: this.Editar.Nombre,
-        Telefono: String(this.Editar.Telefono),
+        Apellido: String(this.Editar.Apellido),
+        Celular: String(this.Editar.Celular),
+        Correo: String(this.Editar.Correo),
+        Documento: String(this.Editar.Documento),
         
         
       })
+      this.boton = 'Editar';
     }
    
   }
@@ -50,7 +58,10 @@ export class DialogComponent implements OnInit {
     const _cliente: Cliente = {
       ClienteID:  this.form.value.ClienteID == null ? 0 : this.form.value.ClienteID,
       Nombre: this.form.value.Nombre,
-      Telefono: this.form.value.Telefono,
+      Apellido: this.form.value.Apellido,
+      Celular: this.form.value.Celular,
+      Correo: this.form.value.Correo,
+      Documento: this.form.value.Documento,
       
     }
     
@@ -61,7 +72,7 @@ export class DialogComponent implements OnInit {
   
             
               console.log(data);
-              this.dialogoReferencia.close('editar')           
+              this.dialogoReferencia.close('editado')           
   
           },
           error: (e) => {
@@ -93,7 +104,7 @@ export class DialogComponent implements OnInit {
     }
   }
   cerrarDialogo() {
-    this.dialogoReferencia.close(); 
+    this.dialogoReferencia.close('cancelar'); 
   }
 
 

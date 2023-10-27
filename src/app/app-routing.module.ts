@@ -10,17 +10,10 @@ const routes: Routes = [
     path: 'inicio-sesion',
     loadChildren: () => import('./iniciar-sesion/iniciar-sesion.module').then(m =>m.IniciarSesionModule) //ruta inicio-sesion
   },
-  {
-    path: 'agencia',
-    loadChildren: () => import('./agencia/agencias.module').then(m =>m.AgenciasModule) //ruta agencia
-  },
+ 
   {
     path: 'cliente',
     loadChildren: () => import('./cliente/clientes.module').then(m =>m.ClienteModule) //ruta cliente
-  },
-  {
-    path: 'empleado',
-    loadChildren: () => import('./empleado/empleados.module').then(m =>m.EmpleadosModule) //ruta cliente
   },
   {
     path: 'conocenos',
@@ -37,6 +30,19 @@ const routes: Routes = [
   {
     path: 'habitaciones',
     loadChildren: () => import('./habitaciones/habitaciones.module').then(m => m.HabitacionesModule) //ruta habitaciones
+  },
+  {
+    path: 'usuarios',
+    loadChildren: () => import('./usuario/usuarios.module').then(m => m.UsuariosModule) //ruta usuario
+  },
+  {
+    path:'reservacion',
+    loadChildren: () => import('./reservacion/reservaciones.module').then(m => m.ReservacionesModule) //ruta reservacion
+  }
+  ,
+  {
+    path:'reservaciones',
+    loadChildren: () => import('./reservaciones/reservaciones.module').then(m => m.ReservacionesModule) //ruta reservacion
   }
 ];
 

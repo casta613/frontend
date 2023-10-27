@@ -1,0 +1,35 @@
+<mat-dialog-content>
+  <form [formGroup]="form" class="form-container">
+    <mat-grid-list cols="1" rowHeight="250px">
+
+
+      <mat-form-field class="form-field">
+        <mat-label for="Usuario">Usuario</mat-label>
+        <input matInput formControlName="Usuario">
+      </mat-form-field>
+
+
+      <mat-form-field class="form-field">
+        <mat-label for="Contrasenia">Contraseña</mat-label>
+        <input type="password" matInput formControlName="Contrasenia">
+      </mat-form-field>
+
+
+      <mat-form-field>
+        <mat-label>Rol</mat-label>
+        <select matNativeControl formControlName="RolID">
+          <option *ngFor="let rol of listaRol" [value]="rol.RolID">{{ rol.Nombre }}</option>
+        </select>
+      </mat-form-field>
+
+
+
+    </mat-grid-list>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="button-container">
+    <button mat-raised-button (click)="agregar()" class="save-button" [disabled]="!form.valid">{{boton}}</button>
+    <button mat-raised-button (click)="cerrarDialogo()" class="cancel-button">Cancelar</button>
+  </div>
+</mat-dialog-actions>

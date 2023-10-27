@@ -1,0 +1,12 @@
+mat-card {
+    width: 97%;
+    margin: 15px;
+}
+
+table {
+    width: 100%;
+}
+
+.table {
+    overflow-x: auto;
+}

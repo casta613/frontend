@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Habitacion } from '../interface/habitacion';
 import {environment} from '../../environments/environments';
@@ -16,16 +16,36 @@ export class HabitacionesService {
 
 
   getHabitaciones(): Observable<Habitacion[]> {
-  return this.http.get<Habitacion[]>(`${this.apiUrl}listar`)
+    const token = sessionStorage.getItem('token'); 
+    const headers = new HttpHeaders({
+    'Authorization': `Bearer ${token}`
+  });
+  return this.http.get<Habitacion[]>(`${this.apiUrl}listar`,{ headers })
 
+  }
+
+  getHabitacion(request: number): Observable<Habitacion> {
+    const token = sessionStorage.getItem('token'); 
+    const headers = new HttpHeaders({
+    'Authorization': `Bearer ${token}`
+  });
+    return this.http.get<Habitacion>(`${this.apiUrl}listar/${request}`,{ headers });
   }
 
   save(request: Habitacion): Observable<ResponseApi> {
-    return this.http.post<ResponseApi>(`${this.apiUrl}Guardar`, request);
+    const token = sessionStorage.getItem('token'); 
+    const headers = new HttpHeaders({
+    'Authorization': `Bearer ${token}`
+  });
+    return this.http.post<ResponseApi>(`${this.apiUrl}agregar`, request,{ headers });
   }
 
   edit(request: Habitacion): Observable<ResponseApi> {
-    return this.http.put<ResponseApi>(`${this.apiUrl}modificar/${request.HabitacionID}`, request);
+    const token = sessionStorage.getItem('token'); 
+    const headers = new HttpHeaders({
+    'Authorization': `Bearer ${token}`
+  });
+    return this.http.put<ResponseApi>(`${this.apiUrl}modificar/${request.HabitacionID}`, request,{ headers });
   }
 
 

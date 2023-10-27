@@ -40,7 +40,7 @@ export class DialogoHabitacionComponent implements OnInit {
       Precio: [null, Validators.required],
       EstatusHabitacionID: [null, Validators.required],
       TipoHabitacionID: [null, Validators.required],
-      Ubicacion:['', Validators.required],
+      Numero:['', Validators.required],
       Descripcion:['', Validators.required],
 
     }) 
@@ -53,9 +53,8 @@ export class DialogoHabitacionComponent implements OnInit {
     if (this.Editar) {
       this.form.patchValue({
         HabitacionID: this.Editar.HabitacionID,
-        Nombre: this.Editar.Nombre,
         Precio: Number(this.Editar.Precio),
-        Ubicacion: String(this.Editar.Ubicacion),
+        Numero: String(this.Editar.Numero),
         Descripcion: this.Editar.Descripcion,
         EstatusHabitacionID: Number(this.Editar.EstatusHabitacionID),
         TipoHabitacionID: Number(this.Editar.TipoHabitacionID),
@@ -101,11 +100,10 @@ export class DialogoHabitacionComponent implements OnInit {
   agregar() {
     const _habitacion: Habitacion = {
       HabitacionID:  this.form.value.HabitacionID == null ? 0 : this.form.value.HabitacionID,
-      Nombre: this.form.value.Nombre,
       Descripcion: this.form.value.Descripcion,
-      Ubicacion: this.form.value.Ubicacion,
+      Numero: this.form.value.Numero,
       Precio: Number(this.form.value.Precio),
-      EstatusHabitacionID: Number(this.form.value.EstatusHabitacion),
+      EstatusHabitacionID: Number(this.form.value.EstatusHabitacionID),
       TipoHabitacionID: Number(this.form.value.TipoHabitacionID)
       
     }
@@ -117,7 +115,7 @@ export class DialogoHabitacionComponent implements OnInit {
   
             
               console.log(data);
-              this.dialogoReferencia.close('editar')           
+              this.dialogoReferencia.close('editado')           
   
           },
           error: (e) => {

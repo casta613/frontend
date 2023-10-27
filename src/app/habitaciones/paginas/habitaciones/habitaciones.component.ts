@@ -8,6 +8,9 @@ import {FormBuilder,FormGroup,Validators} from '@angular/forms';
 import { pipe } from 'rxjs';
 import { DialogoHabitacionComponent } from '../../dialog-habitacion/dialog-habitacion.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import {ApiService} from '../../../services/api.service';
+import { data } from 'jquery';
 
 @Component({
   selector: 'app-habitaciones',
@@ -16,9 +19,15 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class HabitacionesComponent implements OnInit {
   listaHabitacion:Habitacion[]=[];
+  
   formularioHabitaciones: FormGroup;
+  list: any = {}; 
+  pokemon:string='';
+  pokemonName:string='';
 
   constructor(
+    private router: Router,
+    private _apiServicio: ApiService,
     private _habitacionesServicio: HabitacionesService,
     private dialog: MatDialog,
     private fb:FormBuilder
@@ -45,17 +54,42 @@ export class HabitacionesComponent implements OnInit {
 
   ngOnInit(): void {
     this.mostrar();
+    this.get();
   } 
-  
-  detalleHabitacion(habitacion: any): void {
-    const dialogRef = this.dialog.open(DialogoHabitacionComponent, {
-      data: { habitacion }, // Pasa los datos de la habitación al cuadro de diálogo
-    });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('El diálogo se cerró con resultado:', result);
+  get(){
+
+    this._apiServicio.get().subscribe({
+      next:(data: any)=>{
+        console.log(data)
+        this.list = data;
+         this.pokemon = this.list.sprites.front_default; 
+         this.pokemonName= this.list.name;    
+         console.log(this.pokemon);
+      }
+    })
+  }
+  
+  reservarHabitacion(habitacion: Habitacion){
+    if(habitacion.EstatusHabitacion === "DISPONIBLE"){
+    this.router.navigate(['/reservacion', { Id: habitacion.HabitacionID }]);
+    }
+
+  }
+  
+  editarHabitacion(habitacion: Habitacion) {
+    this.dialog.open(DialogoHabitacionComponent, {
+      disableClose: true,
+      data: habitacion
+    }).afterClosed().subscribe(result => {
+
+      if (result === "editado")
+        this.mostrar();
+
     });
   }
+
+
   agregar() {
     this.dialog.open(DialogoHabitacionComponent, {
       disableClose: true

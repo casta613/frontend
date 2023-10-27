@@ -1,4 +1,5 @@
 export interface RespAcceso{
     Token:string,
-    mensage:string
+    mensage:string,
+    Rol:string
 }

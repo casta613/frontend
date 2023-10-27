@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
                 console.log(data.mensage);
                 if(data.Token){
                     sessionStorage.setItem('token', data.Token);
+                    sessionStorage.setItem('rol', data.Rol);
                     this.navegarAInicio();
                 }else{
                     alert(data.mensage);

@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { DialogComponent } from '../dialog/dialog.component';
+import {DialogComponent as DialogConfirmacion} from '../../shared/components/dialog/dialog.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Cliente } from 'src/app/interface/cliente';
 import { MatPaginator } from '@angular/material/paginator';
@@ -10,13 +11,13 @@ import { ClienteService } from 'src/app/services/cliente.service';
 @Component({
   selector: 'app-cliente',
   templateUrl: './cliente.component.html',
-  styleUrls: ['./cliente.component.scss']
+  styleUrls: ['./cliente.component.css']
 })
 export class ClienteComponent {
   listaCliente:Cliente[]=[];
   form: FormGroup;
   dtOptions: DataTables.Settings = {};
-  displayedColumns: string[] = ['ClienteID','Nombre','Telefono', 'acciones'];
+  displayedColumns: string[] = ['ClienteID','Nombre','Apellido','Celular','Correo','Documento', 'acciones'];
   dataSource = new MatTableDataSource<Cliente>(this.listaCliente);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -56,9 +57,12 @@ export class ClienteComponent {
       data: cliente
     }).afterClosed().subscribe(result => {
 
-      if (result === "editado")
+      if (result === "editado"){
         this.mostrar();
-
+        this.dialog.open(DialogConfirmacion, {
+          data: 'editado'
+        });
+      }
     });
   }
 
@@ -68,6 +72,9 @@ export class ClienteComponent {
     }).afterClosed().subscribe(result => {
       if (result === "agregado") {
         this.mostrar();
+        this.dialog.open(DialogConfirmacion, {
+          data: 'agregado'
+        });
       }
     });
   }
@@ -88,6 +95,6 @@ export class ClienteComponent {
     
   } 
 
-
+  
 
 }

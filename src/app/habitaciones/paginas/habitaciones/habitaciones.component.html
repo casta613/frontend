@@ -2,21 +2,29 @@
 <div>
     <button mat-raised-button color="primary" (click)="agregar()"><mat-icon mat-list-icon>add</mat-icon> Nueva
         Habitacion</button>
+
 </div>
 <div class="row">
     <div class="col-lg-3 col-6" *ngFor="let habitacion of listaHabitacion">
 
-        <mat-card>
+        <mat-card
+            [style.border]="habitacion.EstatusHabitacion === 'DISPONIBLE' ? '2px solid #66ff66' : '2px solid #F02E28' ">
             <mat-card-content>
+                <div class="contenido">
+                    <h2>No {{habitacion.Numero}}</h2>
 
-                <h3>{{habitacion.HabitacionID}}</h3>
-                <p>{{habitacion.Descripcion}}</p>
+                    <h3 [style.color]="habitacion.EstatusHabitacion === 'DISPONIBLE' ? '#66ff66' : '#F02E28' ">
+                        {{habitacion.TipoHabitacion}}</h3>
 
+                </div>
+                <button class="edit" mat-icon-button color="primary" (click)="editarHabitacion(habitacion)">
+                    <mat-icon>edit</mat-icon>
+                </button>
                 <mat-divider></mat-divider>
             </mat-card-content>
-            <mat-card-actions>
-                <button mat-raised-button (click)="detalleHabitacion(habitacion)">Detalles</button>
-
+            <mat-card-actions (click)=" reservarHabitacion(habitacion)"
+                [style.background]="habitacion.EstatusHabitacion === 'DISPONIBLE' ? '#66ff66' : '#F02E28' ">
+                {{habitacion.EstatusHabitacion}}
             </mat-card-actions>
         </mat-card>
 

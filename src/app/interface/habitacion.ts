@@ -1,11 +1,12 @@
 export interface Habitacion {
     HabitacionID: number,
-    Nombre:string,
-    Ubicacion: string,
+    Numero: string,
     Precio: number,
     Descripcion: string,
     TipoHabitacionID: number,
-    EstatusHabitacionID: number
+    EstatusHabitacionID: number,
+    TipoHabitacion?: string,
+    EstatusHabitacion?: string
     
   }
   

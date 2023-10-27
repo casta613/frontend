@@ -1,5 +1,8 @@
 export interface Cliente{
     ClienteID: number,
     Nombre:string,
-    Telefono:string
+    Apellido:string,
+    Celular:string,
+    Documento:string,
+    Correo:string
 }
